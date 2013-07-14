@@ -4,7 +4,6 @@ var fs = require('fs');
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-	response.send(123);
   try {
  	var data = fs.readFileSync('./index.html', 'utf8');
 	response.send(data );
@@ -12,7 +11,6 @@ app.get('/', function(request, response) {
   catch (err2) {
 	response.send(err2);
   }
-
 });
 
 var port = process.env.PORT || 5000;
