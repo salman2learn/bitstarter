@@ -6,9 +6,8 @@ var app = express.createServer(express.logger());
 app.get('/', function(request, response) {
 
   try {
-  fs.readFileSync('./index.html', 'utf8', function (err, data) {
-	if (err) response.send('unable to load file index.html' + err);
-	response.send('[' + data.toString() + ']');
+  var data = fs.readFileSync('./index.html', 'utf8');
+	response.send(data );
   });
   }
   catch (err2) {
