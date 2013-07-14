@@ -4,10 +4,16 @@ var fs = require('fs');
 var app = express.createServer(express.logger());
 
 app.get('/', function(request, response) {
-  fs.readFileSync('index.html', 'utf8', function (err, data) {
+
+  try {
+  fs.readFileSync('./index.html', 'utf8', function (err, data) {
 	if (err) response.send('unable to load file index.html' + err);
 	response.send('[' + data.toString() + ']');
   });
+  }
+  catch (err2) {
+	response.send(err2);
+  }
   response.send('Hello World');
 });
 
